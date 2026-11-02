@@ -6,9 +6,90 @@ The package contains Halla's visual tokens and reusable components while applica
 
 ## Components
 
+- `AlertDialog`
+- `Badge`
+- `Button`
+- `Card` and card primitives
 - `Icon`
+- `EmptyState`
 - `FilterChips`
 - `Drawer` (built on Radix Dialog)
+- `Skeleton`
+- `Tooltip` (built on Radix Tooltip)
+
+## Usage
+
+```tsx
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  EmptyState,
+  Skeleton,
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@hallaco/ui";
+```
+
+```tsx
+<Button variant="primary" size="md" loading={isSaving}>
+  Save
+</Button>
+
+<Card>
+  <CardHeader>
+    <CardTitle>Example card</CardTitle>
+  </CardHeader>
+  <CardContent>Reusable content goes here.</CardContent>
+</Card>
+
+<Badge variant="success">Available</Badge>
+<EmptyState title="Nothing here yet" description="Try another option." action={<Button>Continue</Button>} />
+<Skeleton className="h-10 w-full" />
+```
+
+Interactive Radix primitives should be wrapped with their provider/root components:
+
+```tsx
+<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <Button aria-label="More information" variant="ghost">Info</Button>
+    </TooltipTrigger>
+    <TooltipContent>More information</TooltipContent>
+  </Tooltip>
+</TooltipProvider>
+```
+
+```tsx
+<AlertDialog>
+  <AlertDialogTrigger asChild><Button variant="destructive">Delete</Button></AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Delete item?</AlertDialogTitle>
+      <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction>Delete</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+```
 
 ## Development
 
